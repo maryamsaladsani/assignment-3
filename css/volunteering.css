@@ -1,0 +1,372 @@
+/* ============================================
+   VOLUNTEERING SECTION - ENHANCED WITH FILTERING & SORTING
+   ============================================ */
+
+.volunteering {
+    background: transparent;
+    padding: clamp(3rem, 6vw, 6rem) var(--space-2);
+    max-width: var(--maxw);
+    margin: 0 auto;
+    scroll-margin-top: 72px;
+}
+
+.volunteering h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+/* ============================================
+   FILTER & SORT CONTROLS
+   ============================================ */
+
+.volunteer-controls {
+    background: var(--card);
+    border: 2px solid var(--secondary);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    margin: 2rem auto;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .controls-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Control Group (Filter or Sort) */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-group label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.control-group label[for="volunteer-filter"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23F09300" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>');
+}
+
+.control-group label[for="volunteer-sort"]::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FD3866" stroke-width="2"><path d="M11 5h10M11 9h7M11 13h4M3 17l3 3 3-3M6 20V4"/></svg>');
+}
+
+/* Select Dropdowns */
+.control-group select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--secondary);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    padding-right: 3rem;
+}
+
+.theme-light .control-group select {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%230f172a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+}
+
+.control-group select:hover {
+    border-color: var(--brand);
+    transform: translateY(-1px);
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(253, 56, 102, 0.2);
+}
+
+/* Results Info */
+.volunteer-results {
+    text-align: center;
+    color: var(--muted);
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.volunteer-results strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.reset-filters {
+    background: none;
+    border: 1px solid var(--accent-light);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+}
+
+.reset-filters:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.reset-filters.hidden {
+    display: none;
+}
+
+/* ============================================
+   VOLUNTEER CARDS
+   ============================================ */
+
+.volunteer-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.volunteer {
+    background: var(--card);
+    border: 2px solid var(--secondary);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.volunteer:hover {
+    transform: translateY(-5px);
+    border-color: var(--brand);
+}
+
+/* Volunteer Header */
+.volunteer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.volunteer h4 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    line-height: 1.4;
+    flex: 1;
+}
+
+/* Role Badge */
+.role-badge {
+    background: var(--accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.role-badge.role-leader {
+    background: var(--brand); /* Mustard for leaders */
+    color: var(--bg);
+}
+
+.role-badge.role-vice {
+    background: var(--secondary); /* Teal for vice leaders */
+    color: white;
+}
+
+.role-badge.role-member {
+    background: var(--accent-light); /* Light pink for members */
+    color: white;
+}
+
+.role-badge.role-founder {
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    color: white;
+}
+
+/* Current Position Indicator */
+.current-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(7, 142, 146, 0.2);
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    padding: 0.3rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.current-indicator::before {
+    content: '●';
+    font-size: 0.6rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.volunteer .date {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.volunteer .date::before {
+    content: '📅';
+    font-size: 0.85rem;
+}
+
+.volunteer p {
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Hidden state for filtered items */
+.volunteer.hidden {
+    display: none;
+}
+
+/* No results message */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--muted);
+    background: var(--card);
+    border: 2px dashed var(--secondary);
+    border-radius: var(--radius);
+    margin: 2rem 0;
+    animation: fadeIn 0.4s ease;
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.no-results h3 {
+    color: var(--text);
+    margin: 0 0 0.5rem;
+}
+
+.no-results p {
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .volunteer-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .role-badge {
+        align-self: flex-start;
+    }
+
+    .current-indicator {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+
+.theme-light .volunteer-controls {
+    background: var(--card);
+    border-color: var(--secondary);
+}
+
+.theme-light .volunteer {
+    background: var(--card);
+    border-color: var(--secondary);
+}
+
+.theme-light .volunteer:hover {
+    border-color: var(--brand);
+}
+
+.theme-light .no-results {
+    background: var(--card);
+    border-color: var(--secondary);
+}
+
+.theme-light .control-group select {
+    background-color: var(--bg);
+    border-color: var(--secondary);
+}
+
+.theme-light .current-indicator {
+    background: rgba(14, 165, 163, 0.15);
+    border-color: var(--secondary);
+    color: var(--secondary);
+}

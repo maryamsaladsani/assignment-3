@@ -8,10 +8,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/volunteering.css">
 
     <!-- Java Script -->
     <script src="js/script.js" defer></script>
     <script src="js/github-api.js" defer></script>
+    <script src="js/volunteering.js" defer></script>
+
 
 </head>
 <body>
@@ -133,63 +136,93 @@
     <div id="projects-container"></div>
 </section>
 
+
 <!-- (5): Volunteering -->
 <section id="volunteering" class="volunteering">
     <h2>Volunteering</h2>
 
-    <article class="volunteer">
-        <h4>Leader of Editorial Committee, KFUPM Yearbook</h4>
-        <p class="date">09/2025 – Present</p>
-        <p>Directed all aspects of the yearbook’s written content, from idea development to final editing. Oversaw grammar and spelling accuracy, guided narrative flow, and ensured a cohesive structure that captured the year’s story in a polished publication.</p>
-    </article>
+    <!-- Filter & Sort Controls -->
+    <div class="volunteer-controls">
+        <div class="controls-grid">
+            <!-- Filter Control -->
+            <div class="control-group">
+                <label for="volunteer-filter">Filter Opportunities </label>
+                <select id="volunteer-filter">
+                    <option value="all">All</option>
+                    <option value="current">Current Only</option>
+                    <option value="past">Past Only</option>
+                </select>
+            </div>
 
-    <article class="volunteer">
-        <h4>Vice Leader of Tech Committee, GSR (Global Students Research Conference)</h4>
-        <p class="date">05/2024 – 02/2025</p>
-        <p>Led the technical execution of a global research conference (5,000+ attendees), including the launch of a dynamic website (360K+ visits), mobile app (1K+ downloads), and abstract submission system (1,300+ submissions). <a href="https://gsr.kfupm.org" target="_blank">gsr.kfupm.org</a></p>
-    </article>
+            <!-- Sort Control -->
+            <div class="control-group">
+                <label for="volunteer-sort">Sort By</label>
+                <select id="volunteer-sort">
+                    <option value="date-desc">Most Recent First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="role">Role (Leader → Member)</option>
+                </select>
+            </div>
+        </div>
+    </div>
 
-    <article class="volunteer">
-        <h4>Vice Leader of PR & Media Team, UAS2030 Team at KFUPM</h4>
-        <p class="date">06/2024 – 08/2024</p>
-        <p>Led the development of a comprehensive marketing plan tailored to the initiative’s goals. Oversaw the PR and media team’s execution across multiple channels, ensuring consistent messaging, strong engagement, and a cohesive public image.</p>
-    </article>
+    <!-- Volunteer List -->
+    <div class="volunteer-list">
+        <article class="volunteer">
+            <h4>Leader of Editorial Committee, KFUPM Yearbook</h4>
+            <p class="date">09/2025 – Present</p>
+            <p>Directed all aspects of the yearbook's written content, from idea development to final editing. Oversaw grammar and spelling accuracy, guided narrative flow, and ensured a cohesive structure that captured the year's story in a polished publication.</p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Marketing Team Member & Content Creator, KFUPM Rally 2nd Edition</h4>
-        <p class="date">03/2024 – 05/2024</p>
-        <p>Supported the KFUPM Rally’s innovation initiative as part of the Marketing Committee, contributing to content creation and digital strategy. Helped achieve a +120% increase in student idea submissions by driving engagement, storytelling, and creative outreach across multiple platforms.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Vice Leader of Tech Committee, GSR (Global Students Research Conference)</h4>
+            <p class="date">05/2024 – 02/2025</p>
+            <p>Led the technical execution of a global research conference (5,000+ attendees), including the launch of a dynamic website (360K+ visits), mobile app (1K+ downloads), and abstract submission system (1,300+ submissions). <a href="https://gsr.kfupm.org" target="_blank">gsr.kfupm.org</a></p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Founder, FemTech (Women in Technology Initiative, Saudi Arabia)</h4>
-        <p class="date">02/2024 – Present</p>
-        <p>Founded and branded FemTech, a student-led initiative empowering women in technology. Developed the visual identity, content strategy, and outreach materials. Led efforts to grow the initiative’s presence, promote its core message <em>“CONNECT, INSPIRE, SUPPORT”</em>, and engage a wide tech audience.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Vice Leader of PR & Media Team, UAS2030 Team at KFUPM</h4>
+            <p class="date">06/2024 – 08/2024</p>
+            <p>Led the development of a comprehensive marketing plan tailored to the initiative's goals. Oversaw the PR and media team's execution across multiple channels, ensuring consistent messaging, strong engagement, and a cohesive public image.</p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Marketing Consultant, Female Media Club at KFUPM</h4>
-        <p class="date">02/2024 – 05/2024</p>
-        <p>Selected as marketing consultant following performance in TEDxKFUPM. Provided creative direction and strategic input to strengthen the club’s digital presence.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Marketing Team Member & Content Creator, KFUPM Rally 2nd Edition</h4>
+            <p class="date">03/2024 – 05/2024</p>
+            <p>Supported the KFUPM Rally's innovation initiative as part of the Marketing Committee, contributing to content creation and digital strategy. Helped achieve a +120% increase in student idea submissions by driving engagement, storytelling, and creative outreach across multiple platforms.</p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Marketing Team Member & Content Writer, TEDxKFUPM</h4>
-        <p class="date">10/2023 – 03/2024</p>
-        <p>Crafted compelling event content and contributed to campaign planning, helping drive over 6,000 registrations and strong campus-wide engagement.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Founder, FemTech (Women in Technology Initiative, Saudi Arabia)</h4>
+            <p class="date">02/2024</p>
+            <p>Founded and branded FemTech, a student-led initiative empowering women in technology. Developed the visual identity, content strategy, and outreach materials. Led efforts to grow the initiative's presence, promote its core message <em>"CONNECT, INSPIRE, SUPPORT"</em>, and engage a wide tech audience.</p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Member, KFUPM Women’s Toastmasters Club</h4>
-        <p class="date">10/2023 – 03/2024</p>
-        <p>Active participant in public speaking sessions and workshops aimed at developing confidence, leadership, and communication skills.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Marketing Consultant, Female Media Club at KFUPM</h4>
+            <p class="date">02/2024 – 05/2024</p>
+            <p>Selected as marketing consultant following performance in TEDxKFUPM. Provided creative direction and strategic input to strengthen the club's digital presence.</p>
+        </article>
 
-    <article class="volunteer">
-        <h4>Volunteer, COVID-19 Vaccination Center</h4>
-        <p class="date">10/2021 – 12/2021</p>
-        <p>Contributed 350+ volunteer hours supporting the national vaccination campaign. Assisted with crowd management, registration, and public guidance, helping ensure smooth operations and community safety during the pandemic.</p>
-    </article>
+        <article class="volunteer">
+            <h4>Marketing Team Member & Content Writer, TEDxKFUPM</h4>
+            <p class="date">10/2023 – 03/2024</p>
+            <p>Crafted compelling event content and contributed to campaign planning, helping drive over 6,000 registrations and strong campus-wide engagement.</p>
+        </article>
+
+        <article class="volunteer">
+            <h4>Member, KFUPM Women's Toastmasters Club</h4>
+            <p class="date">10/2023 – 03/2024</p>
+            <p>Active participant in public speaking sessions and workshops aimed at developing confidence, leadership, and communication skills.</p>
+        </article>
+
+        <article class="volunteer">
+            <h4>Volunteer, COVID-19 Vaccination Center</h4>
+            <p class="date">10/2021 – 12/2021</p>
+            <p>Contributed 350+ volunteer hours supporting the national vaccination campaign. Assisted with crowd management, registration, and public guidance, helping ensure smooth operations and community safety during the pandemic.</p>
+        </article>
+
+    </div>
 </section>
 
 <!-- (6): Contact -->
