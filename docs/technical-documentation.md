@@ -66,7 +66,7 @@ AI tools assisted in:
 ├── css/
 │   └── styles.css              # Styling and animations
 ├── js/
-│   └── script.js               # JavaScript for interactivity
+│   └── .js               # JavaScript for interactivity
 ├── docs/
 │   ├── ai-usage-report.md      # AI documentation
 │   └── technical-documentation.md  # (this file)
