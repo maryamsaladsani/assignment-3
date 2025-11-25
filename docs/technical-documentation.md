@@ -1,74 +1,147 @@
-# 🧠 Technical Documentation
+# Technical Documentation
 
-## 1️⃣ Overview
-This document explains the internal structure, technologies, and logic behind the **Maryam Aladsani Portfolio Website**.  
-It demonstrates the technical design, implementation details, and reasoning behind each feature.
+## Overview
+This portfolio website demonstrates advanced web development skills including API integration, state management, dynamic content, and form validation. Built with vanilla HTML, CSS, and JavaScript.
 
 ---
 
-## 2️⃣ Technologies Used
-| Area | Technology | Purpose |
-|------|-------------|----------|
-| **Frontend** | HTML5 | Defines the page structure and semantic content. |
-|  | CSS3 | Handles layout, responsive design, animations, and transitions. |
-|  | JavaScript (ES6) | Adds interactivity, event handling, and data storage. |
+## Technologies Used
+| Area                  | Technology | Purpose |
+|-----------------------|-------------|----------|
+| **Frontend**          | HTML5 | Semantic structure and accessibility |
+|                       | CSS3 | Responsive design, animations, theme system |
+|                       | JavaScript (ES6) | Interactivity, API calls, state management  |
 | **Development Tools** | IntelliJ IDEA | Used for development and testing. |
-| **Version Control** | Git & GitHub | Source management and deployment. |
+| **Version Control**   | Git & GitHub | Source management and deployment. |
+| **API**               | GitHub API  | Fetch and display repositories dynamically  |
+## File Structure
+
+```
+assignment-3/
+├── index.html
+├── css/
+│   ├── styles.css          # Base styles, theme variables
+│   ├── skills.css          # About/Skills section
+│   ├── projects.css        # GitHub projects section
+│   ├── volunteering.css    # Timeline component
+│   └── contact.css         # Contact form styles
+├── js/
+│   ├── contact.js           
+│   ├── greeting.js         
+│   ├── scroll-progress.js        
+│   ├── theme.js           
+│   ├── github-api.js       # GitHub API integration
+│   └── volunteering.js     # Timeline filtering
+├── assets/images/
+└── docs/
+    ├── ai-usage-report.md
+    └── technical-documentation.md
+```
 
 ---
-##  3️⃣  Core Features and Logic
 
-#### 3.1 Dynamic Greeting
-Displays a personalized greeting such as “Good morning, Maryam!”, based on the time of day and saved username.
-Stores the username in localStorage and hides the input form after submission.
-Provides a Change name button to edit the stored name.
+## API Integration
 
-Purpose: Demonstrates both Dynamic Content and Data Handling.
+### GitHub API
 
-#### 3.2 Contact Form Validation
-* Validates name, email, and message fields before submission.
-* Provides inline feedback using visual highlights and text messages.
-* Displays loading, success, and error states dynamically.
- 
-Key Concepts
-* Event listeners (submit, input, blur).
-* Regular expressions for email validation.
-* Accessibility via aria-live and aria-invalid.
+**Purpose:** Display my latest repositories dynamically
 
-#### 3.3 Scroll Progress Bar
-* A thin horizontal bar fills across the top of the page as the user scrolls.
-* Updates width dynamically using JavaScript to calculate scroll progress:
-* Uses CSS transitions for smooth animation (transition: width 0.08s linear).
+**Implementation:**
+- Fetches repos from `https://api.github.com/users/maryamsaladsani/repos`
+- Filters out forked repos
+- Sorts by most recently updated
+- Displays top 6 with language, description, and topics
 
-#### 3.4 Dark/Light Theme Toggle
-* Allows the user to switch between light and dark color themes.
-* Automatically applies the saved theme on reload.
-  Example CSS
+**Error Handling:**
+- Loading state while fetching
+- Error message with retry button if fetch fails
+- Graceful fallback if no repos found
+
+**Code Location:** `js/github-api.js`
+
+---
+
+## Complex Logic
+
+### 1. Dynamic Greeting
+Displays personalized time-based greeting (morning/afternoon/evening) with saved username.
+
+**Logic:**
+- Checks current hour to determine time of day
+- Saves username to localStorage
+- Shows/hides input form based on saved state
+- "Change name" button to update stored name
+
+### 2. Contact Form Validation
+Multi-field validation with inline feedback.
+
+**Validation Rules:**
+- Name: Minimum 2 characters
+- Email: Valid format (regex: `/^\S+@\S+\.\S+$/`)
+- Message: Minimum 10 characters
+
+**Features:**
+- Real-time validation on input/blur
+- Visual error highlights (red border)
+- Inline success/error messages
+- Loading state during submission
+- Prefills saved name/email from localStorage
+
+### 3. Volunteering Timeline Filter
+Clickable timeline items with expand/collapse and filtering.
+
+**Logic:**
+- Click any item to expand description
+- Auto-closes other expanded items
+- Updates item counts dynamically
+
+### 4. Scroll Progress Bar
+Horizontal bar that fills as you scroll down the page.
+
+---
+
+## State Management
+
+### localStorage Usage
+
+**Stored Data:**
+1. `theme` - User's theme preference (light/dark)
+2. `username` - Saved name for greeting
+3. `contact_name` - Prefill name in contact form
+4. `contact_email` - Prefill email in contact form
+
+**Implementation:**
+- Checks localStorage availability before use
+- Loads saved state on page load
+- Updates localStorage on user actions
 
 
-## 4️⃣ Performance Considerations
-* Pure HTML/CSS/JS — no heavy frameworks.
-* Optimized images in /assets/images/ for faster load.
-* CSS transitions use hardware-accelerated properties (transform, opacity).
-* Efficient event listeners and minimal DOM manipulation.
+### Theme System
 
-##  5️⃣ AI Integration (Summary)
-AI tools assisted in:
-* Generating and refining code for the greeting feature, form validation, and scroll progress bar.
-* Debugging event-handling logic.
-* Reviewing accessibility and performance optimizations.
-  Full details documented in [docs/ai-usage-report.md.]()
+**Features:**
+- Toggle between light and dark mode
+- Saves preference to localStorage
+- Uses CSS variables for easy switching
+- Respects system preference on first visit
 
-##  6️⃣ File Structure
-```plaintext
-/
-├── index.html                  # Main webpage
-├── css/
-│   └── styles.css              # Styling and animations
-├── js/
-│   └── .js               # JavaScript for interactivity
-├── docs/
-│   ├── ai-usage-report.md      # AI documentation
-│   └── technical-documentation.md  # (this file)
-└── assets/
-    └── images/                 # Profile picture, skill icons, etc.
+---
+
+## Performance Optimization
+
+### Lighthouse Scores
+
+**Desktop Performance:**
+- **Performance:** 99/100
+- **Accessibility:** 96/100
+- **Best Practices:** 100/100
+- **SEO:** 91/100
+
+**Mobile Performance:**
+- **Performance:** 99/100
+- **Accessibility:** 95/100
+- **Best Practices:** 100/100
+- **SEO:** 91/100
+
+---
+
+**Last Updated:** November 2025
