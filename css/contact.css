@@ -1,0 +1,286 @@
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact {
+    background: var(--card);
+    padding: var(--space-4) var(--space-2);
+    max-width: 720px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 0 auto clamp(2rem, 4vh, -2rem);
+    scroll-margin-top: 72px;
+}
+
+.contact h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: var(--space-3);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+.contact p {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: var(--space-3);
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+
+.contact-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    gap: .4rem;
+}
+
+/* ============================================
+   FORM LABELS
+   ============================================ */
+
+label {
+    font-weight: 600;
+    color: var(--muted);
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+
+input,
+textarea {
+    font: inherit;
+    border: 2px solid rgba(255, 255, 255, .1);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: .6rem;
+    padding: .7rem .9rem;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(253, 56, 102, .3);
+}
+
+/* ============================================
+   FORM VALIDATION STATES
+   ============================================ */
+
+/* Inline field messages */
+.field-msg {
+    margin: .35rem 0 0;
+    font-size: .9rem;
+    line-height: 1.2;
+}
+
+.field-msg.err {
+    color: #ff4d4f;
+}
+
+.field-msg.ok {
+    color: #0acf83;
+}
+
+/* Error highlight */
+.input-error {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, .15);
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
+button[type="submit"] {
+    cursor: pointer;
+    border: none;
+    background: var(--brand);
+    color: var(--text);
+    padding: .75rem 1rem;
+    border-radius: .7rem;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform .12s ease, background .2s ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================
+   FORM STATUS (FEEDBACK)
+   ============================================ */
+
+.form-status {
+    min-height: 1.25rem;
+    margin: .5rem 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.form-status.loading::after {
+    content: " Loading…";
+}
+
+/* Success state */
+@keyframes popIn {
+    from {
+        transform: scale(.98);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.status-ok {
+    color: #0acf83;
+    animation: popIn .25s ease;
+}
+
+.status-err {
+    color: #ff4d4f;
+    animation: popIn .25s ease;
+}
+
+/* ============================================
+   CONTACT ICONS (in hero section)
+   ============================================ */
+
+.hero__icons {
+    display: flex;
+    gap: .8rem;
+    margin-top: -0.5rem;
+    justify-content: center;
+}
+
+.icon {
+    width: clamp(44px, 8vw, 64px);
+    height: clamp(44px, 8vw, 64px);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+}
+
+.icon:hover {
+    transform: translateY(-2px);
+    background: rgba(253, 56, 102, .2);
+    border-color: var(--brand);
+}
+
+.icon::before {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hero__icons a[aria-label="Email"]::before {
+    background-image: url('../assets/images/contactIcons/1.png');
+}
+
+.hero__icons a[aria-label="GitHub"]::before {
+    background-image: url('../assets/images/contactIcons/2.png');
+}
+
+.hero__icons a[aria-label="LinkedIn"]::before {
+    background-image: url('../assets/images/contactIcons/3.png');
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .contact {
+        padding: var(--space-3) var(--space-2);
+        margin: 0 auto 2rem;
+    }
+
+    .contact h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+
+.theme-light .contact {
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.theme-light input,
+.theme-light textarea {
+    border-color: rgba(0, 0, 0, .1);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.theme-light input:focus,
+.theme-light textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(253, 56, 102, .2);
+}
+
+.theme-light .input-error {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, .15);
+}
+
+.theme-light button[type="submit"] {
+    background: var(--brand);
+    color: var(--bg);
+}
+
+.theme-light button[type="submit"]:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.theme-light .field-msg.err {
+    color: #ff4d4f;
+}
+
+.theme-light .field-msg.ok {
+    color: #0acf83;
+}
+
+.theme-light .status-ok {
+    color: #0acf83;
+}
+
+.theme-light .status-err {
+    color: #ff4d4f;
+}
