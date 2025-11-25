@@ -1,91 +1,6 @@
-// js/theme.js
-(() => {
-    const root = document.documentElement;               // <html>
-    const btn  = document.getElementById('theme-toggle'); // the toggle button
+// Contact Form: Validation + Feedback + localStorage
+// Handles real-time validation, inline error messages, and form submission with loading states
 
-    if (!btn) return; // safety
-
-    // 1) Decide initial theme: saved value → system preference → default dark
-    const saved = localStorage.getItem('theme'); // 'light' | 'dark' | null
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    const initial = saved ?? (systemPrefersLight ? 'light' : 'dark');
-
-    const applyTheme = (mode) => {
-        if (mode === 'light') {
-            root.classList.add('theme-light');     //  CSS variables switch on this class
-            btn.textContent = '☀️';
-            btn.setAttribute('aria-pressed', 'true');
-        } else {
-            root.classList.remove('theme-light');
-            btn.textContent = '🌙';
-            btn.setAttribute('aria-pressed', 'false');
-        }
-    };
-
-    // Apply on load
-    applyTheme(initial);
-
-    // 2) Toggle on click + persist
-    btn.addEventListener('click', () => {
-        const next = root.classList.contains('theme-light') ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-    });
-})();
-
-// ----- Personalized Greeting with localStorage -----
-(function () {
-    const greetingEl = document.getElementById('greeting');
-    const form = document.getElementById('usernameForm');
-    const input = document.getElementById('usernameInput');
-    const changeBtn = document.getElementById('changeNameBtn');
-
-    if (!greetingEl) return; // safely exit if markup missing
-
-    function partOfDay() {
-        const h = new Date().getHours();
-        return h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening';
-    }
-
-    function canStore() {
-        try {
-            const k = '__t';
-            localStorage.setItem(k, '1'); localStorage.removeItem(k);
-            return true;
-        } catch { return false; }
-    }
-
-    function render() {
-        const name = canStore() ? localStorage.getItem('username') : null;
-        const text = name ? `Good ${partOfDay()}, ${name}!` : `Good ${partOfDay()}!`;
-        greetingEl.textContent = text;
-
-        // Show form only if no name saved
-        const hasName = Boolean(name);
-        if (form) form.classList.toggle('hidden', hasName);
-        if (changeBtn) changeBtn.classList.toggle('hidden', !hasName);
-    }
-
-    form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const v = input.value.trim();
-        if (v.length >= 2 && canStore()) {
-            localStorage.setItem('username', v);
-            input.value = '';
-            render();
-        }
-    });
-
-    changeBtn?.addEventListener('click', () => {
-        // let user update their stored name
-        form.classList.remove('hidden');
-        input.focus();
-    });
-
-    render();
-})();
-
-// ---- Contact form: validation + feedback + localStorage helpers  ----
 (function () {
     const form = document.querySelector('.contact-form');
     if (!form) return;
@@ -98,7 +13,13 @@
 
     // --- Utilities ---
     const canStore = () => {
-        try { localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return true; } catch { return false; }
+        try {
+            localStorage.setItem('__t','1');
+            localStorage.removeItem('__t');
+            return true;
+        } catch {
+            return false;
+        }
     };
 
     function setInlineMsg(input, text, ok=false) {
@@ -159,7 +80,7 @@
         return { valid, name, email, msg };
     }
 
-    // Prefill from localStorage (nice touch + “data handling”)
+    // Prefill from localStorage (nice touch + "data handling")
     if (canStore()) {
         const savedName = localStorage.getItem('contact_name');
         const savedEmail = localStorage.getItem('contact_email');
@@ -174,7 +95,7 @@
         msgEl.addEventListener(evt, () => validate());
     });
 
-    // Submit handler (simulated async “send” with loading/success/failure)
+    // Submit handler (simulated async "send" with loading/success/failure)
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const { valid, name, email } = validate();
@@ -217,22 +138,4 @@
             submitBtn.disabled = false;
         }, 800);
     });
-})();
-
-// ---- Scroll progress line ----
-(function(){
-    const bar = document.getElementById('scrollProgress');
-    if (!bar) return;
-
-    function update(){
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
-        const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
-        bar.style.width = pct + '%';
-    }
-    // run on load/scroll/resize
-    addEventListener('scroll', update, { passive: true });
-    addEventListener('resize', update);
-    document.addEventListener('DOMContentLoaded', update);
-    update();
 })();
