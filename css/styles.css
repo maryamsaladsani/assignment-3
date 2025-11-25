@@ -30,7 +30,7 @@ html, body, input, textarea, button {
     --text: #ffffff;
     --muted: #b6b9d6;
     --brand: #F09300;
-    --accent:  #FD3866;
+    --accent: #fd3866;
     --accent-light: #FD6484;
     --secondary: #078E92;
 
@@ -60,7 +60,7 @@ html, body, input, textarea, button {
     --text: #0f172a;
     --muted: #475569;
     --brand: #F09300;
-    --accent: #FD3866;
+    --accent: #fd3866;
     --accent-light: #FD6484;
     --secondary: #0EA5A3;
 
@@ -312,9 +312,9 @@ html, body, input, textarea, button {
     background-size: contain; background-repeat: no-repeat; background-position: center;
 }
 
-.hero__icons a[aria-label="Email"]::before    { background-image: url('../assets./images/contactIcons/1.png'); }
-.hero__icons a[aria-label="GitHub"]::before   { background-image: url('../assets./images/contactIcons/2.png'); }
-.hero__icons a[aria-label="LinkedIn"]::before { background-image: url('../assets./images/contactIcons/3.png'); }
+.hero__icons a[aria-label="Email"]::before    { background-image: url('../assets/images/contactIcons/1.png'); }
+.hero__icons a[aria-label="GitHub"]::before   { background-image: url('../assets/images/contactIcons/2.png'); }
+.hero__icons a[aria-label="LinkedIn"]::before { background-image: url('../assets/images/contactIcons/3.png'); }
 
 
 /**********************************************************************************************************************/
@@ -607,7 +607,7 @@ button[type="submit"]:hover {
 /* Inline field messages */
 .field-msg { margin:.35rem 0 0; font-size:.9rem; line-height:1.2; }
 .field-msg.err { color:#ff4d4f; }
-.field-msg.ok  { color:#1c7c2f; }
+.field-msg.ok  { color:#0ACF83FF; }
 
 /* Error highlight */
 .input-error { border-color:#ff4d4f !important; box-shadow:0 0 0 2px rgba(255,77,79,.15); }
@@ -618,7 +618,7 @@ button[type="submit"]:hover {
 
 /* Nice success pop */
 @keyframes popIn { from{transform:scale(.98);opacity:.0} to{transform:scale(1);opacity:1} }
-.status-ok { color:#1c7c2f; animation:popIn .25s ease; }
+.status-ok { color: #0ACF83FF; animation:popIn .25s ease; }
 .status-err { color:#ff4d4f; animation:popIn .25s ease; }
 
 /* 3- Scroll progress line */
