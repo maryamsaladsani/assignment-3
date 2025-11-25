@@ -461,3 +461,44 @@ html, body, input, textarea, button {
         transition: none;
     }
 }
+
+/* ============================================
+   MINIMAL SECTION DIVIDERS
+   ============================================ */
+
+section { position: relative; }
+
+/* Simple gradient line for all sections */
+.hero::before,
+.about::after,
+.projects::after,
+.volunteering::after {
+    content: '';
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary) 25%, var(--brand) 50%, var(--secondary) 75%, transparent);
+    opacity: 0.3;
+}
+
+.hero::before { z-index: 1; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero::before,
+    .about::after,
+    .projects::after,
+    .volunteering::after {
+        bottom: -2.5rem;
+    }
+}
+
+/* Light Theme */
+.theme-light .hero::before,
+.theme-light .about::after,
+.theme-light .projects::after,
+.theme-light .volunteering::after {
+    opacity: 0.4;
+}
