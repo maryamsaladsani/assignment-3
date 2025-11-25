@@ -470,9 +470,9 @@ section { position: relative; }
 
 /* Simple gradient line for all sections */
 .hero::before,
-.about::after,
-.projects::after,
-.volunteering::after {
+.about-intro::after,
+.skills::after,
+.projects::after {
     content: '';
     position: absolute;
     bottom: -3rem;

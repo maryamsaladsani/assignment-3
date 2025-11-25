@@ -29,7 +29,7 @@
     <nav class="nav" aria-label="Primary">
         <ul class="nav__links">
             <li><a href="#about">About</a></li>
-            <li><a href="#about">Skills</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#volunteering">Volunteering</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -82,44 +82,99 @@
     </div>
 </section>
 
-<!-- (3): About & Skills-->
-<section id="about" class="about">
-    <div class="about__grid">
-        <article class="about-card">
-            <h3> About Me </h3>
-            <p>
-                Passionate Junior in Software Engineering, adept at coding and problem-solving,
-                keen to apply theoretical knowledge to practical projects. Strong analytical skills,
-                quick learner, dedicated team player committed to growth, demonstrated leadership abilities,
-                and skilled in team collaboration.
-            </p>
-        </article>
 
-        <article class="about-card">
-            <h3>Technical skills</h3>
-            <ul class="tech-icons">
-                <li><img src="assets/images/skillsLogos/javaLogo.png" alt="Java" class="skill-logo"></li>
-                <li><img src="assets/images/skillsLogos/pythonLogo.png" alt="Python" class="skill-logo"></li>
-                <li><img src="assets/images/skillsLogos/htmlcssjsLogo.png" alt="HTML/CSS/JS" class="skill-logo"></li>
-                <li><img src="assets/images/skillsLogos/wordPressLogo.png" alt="WordPress" class="skill-logo"></li>
-                <li><img src="assets/images/skillsLogos/figmaLogo.png" alt="Figma" class="skill-logo"></li>
-            </ul>
-        </article>
-
-        <article class="about-card">
-            <h3>Soft skills</h3>
-            <ul>
-                <li>Problem Solving</li>
-                <li>Leadership</li>
-                <li>Teamwork & Communication</li>
-                <li>Requirements Analysis</li>
-            </ul>
-        </article>
-
+<!-- (3): About Section -->
+<section id="about" class="about-intro">
+    <div class="about-intro__content">
+        <h2>About Me</h2>
+        <p>
+            Passionate Junior in Software Engineering, adept at coding and problem-solving,
+            keen to apply theoretical knowledge to practical projects. Strong analytical skills,
+            quick learner, dedicated team player committed to growth, demonstrated leadership abilities,
+            and skilled in team collaboration.
+        </p>
     </div>
 </section>
 
-<!-- (4): GitHub Projects -->
+<!-- (4): Skills Section -->
+<section id="skills" class="skills">
+    <h2>Skills & Expertise</h2>
+    <div class="skills__grid">
+        <!-- Technical Skills Card -->
+        <article class="skill-card">
+            <div class="skill-card__icon">💻</div>
+            <h3>Technical Skills</h3>
+            <ul class="tech-icons">
+                <li>
+                    <img src="assets/images/skillsLogos/javaLogo.png" alt="Java" class="skill-logo">
+                    <span class="skill-name">Java</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/pythonLogo.png" alt="Python" class="skill-logo">
+                    <span class="skill-name">Python</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/htmlcssjsLogo.png" alt="HTML/CSS/JS" class="skill-logo">
+                    <span class="skill-name">Web Dev</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/wordPressLogo.png" alt="WordPress" class="skill-logo">
+                    <span class="skill-name">WordPress</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/figmaLogo.png" alt="Figma" class="skill-logo">
+                    <span class="skill-name">Figma</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/cSharpLogo.png" alt="C#" class="skill-logo">
+                    <span class="skill-name">C#</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/reactLogo.png" alt="React" class="skill-logo">
+                    <span class="skill-name">React</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/sqlLogo.png" alt="SQL" class="skill-logo">
+                    <span class="skill-name">SQL</span>
+                </li>
+                <li>
+                    <img src="assets/images/skillsLogos/streamlitLogo.png" alt="Streamlit" class="skill-logo">
+                    <span class="skill-name">Streamlit</span>
+                </li>
+            </ul>
+        </article>
+
+        <!-- Soft Skills Card -->
+        <article class="skill-card">
+            <div class="skill-card__icon">🤝</div>
+            <h3>Soft Skills</h3>
+            <ul class="skill-list">
+                <li>
+                    <span class="skill-bullet">▸</span>
+                    <span>Problem Solving</span>
+                </li>
+                <li>
+                    <span class="skill-bullet">▸</span>
+                    <span>Leadership</span>
+                </li>
+                <li>
+                    <span class="skill-bullet">▸</span>
+                    <span>Teamwork & Communication</span>
+                </li>
+                <li>
+                    <span class="skill-bullet">▸</span>
+                    <span>Adaptability</span>
+                </li>
+                <li>
+                    <span class="skill-bullet">▸</span>
+                    <span>Attention to Detail</span>
+                </li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<!-- (5): GitHub Projects -->
 <section id="projects" class="projects">
     <h2>Recent Projects</h2>
     <p class="projects-intro">
@@ -141,6 +196,8 @@
     <!-- Projects Container (populated by JavaScript) -->
     <div id="projects-container"></div>
 </section>
+
+<!-- (6): Volunteering -->
 <section id="volunteering" class="volunteering">
     <h2>Volunteering Experience</h2>
 
@@ -212,7 +269,7 @@
     </div>
 </section>
 
-<!-- (6): Contact -->
+<!-- (7): Contact -->
 <section id="contact" class="contact">
     <h2>Get in touch</h2>
     <p>Feel free to reach out for collaboration, questions, or feedback.</p>
@@ -253,7 +310,7 @@
 </section>
 
 
-<!-- (7): Footer -->
+<!-- (8): Footer -->
 <footer class="site-footer">
     <small>© <span id="year">2025</span> Maryam Aladsani · <a href="#home">Back to top</a></small>
 </footer>
