@@ -123,6 +123,63 @@ html, body, input, textarea, button {
     border-color: var(--brand);
 }
 
+/*!* ============================================*/
+/*   TOP BAR / NAVIGATION*/
+/*   ============================================ *!*/
+
+/*.topbar {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    width: 100%;*/
+/*    min-height: 48px;*/
+/*    box-sizing: border-box;*/
+/*    z-index: 100;*/
+/*    background: rgba(0, 0, 0, .5);*/
+/*    backdrop-filter: blur(8px);*/
+/*    border-bottom: 1px solid rgba(255, 255, 255, .08);*/
+/*}*/
+
+/*.nav {*/
+/*    max-width: var(--maxw);*/
+/*    margin: 0 auto;*/
+/*    padding: .8rem var(--space-2);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-end;*/
+/*    flex-wrap: wrap;*/
+/*    gap: .4rem 1rem;*/
+/*}*/
+
+/*.nav__links {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: clamp(.4rem, 2.5vw, 1.2rem);*/
+/*    list-style: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.nav__links a {*/
+/*    color: var(--muted);*/
+/*    font-weight: 500;*/
+/*    transition: color .2s, background .2s;*/
+/*    padding: .3rem .6rem;*/
+/*    border-radius: .4rem;*/
+/*    font-size: clamp(.92rem, 1.8vw, 1.05rem);*/
+/*}*/
+
+/*.nav__links a:hover {*/
+/*    color: var(--accent);*/
+/*}*/
+
+/*!* Light theme topbar *!*/
+/*.theme-light .topbar {*/
+/*    background: rgba(255, 255, 255, .65);*/
+/*    border-bottom-color: rgba(0, 0, 0, .08);*/
+/*    backdrop-filter: blur(8px);*/
+/*}*/
 /* ============================================
    TOP BAR / NAVIGATION
    ============================================ */
@@ -147,9 +204,8 @@ html, body, input, textarea, button {
     padding: .8rem var(--space-2);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: .4rem 1rem;
+    justify-content: space-between; /* Changed from flex-end */
+    gap: .5rem;
 }
 
 .nav__links {
@@ -174,13 +230,54 @@ html, body, input, textarea, button {
     color: var(--accent);
 }
 
+/* ============================================
+   MOBILE NAVIGATION
+   ============================================ */
+
+@media (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        padding: .6rem var(--space-2);
+        gap: .6rem;
+    }
+
+    .nav__links {
+        order: 2; /* Links below toggle on mobile */
+        justify-content: center;
+        gap: .3rem;
+        width: 100%;
+    }
+
+    .nav__links a {
+        font-size: 0.85rem;
+        padding: .25rem .5rem;
+    }
+
+    .theme-toggle {
+        order: 1; /* Toggle at top right */
+        align-self: flex-end;
+        margin: 0;
+    }
+}
+
+/* Tablet - single row but tighter spacing */
+@media (min-width: 481px) and (max-width: 768px) {
+    .nav__links {
+        gap: .5rem;
+    }
+
+    .nav__links a {
+        font-size: 0.9rem;
+        padding: .25rem .4rem;
+    }
+}
+
 /* Light theme topbar */
 .theme-light .topbar {
     background: rgba(255, 255, 255, .65);
     border-bottom-color: rgba(0, 0, 0, .08);
     backdrop-filter: blur(8px);
 }
-
 /* ============================================
    HERO SECTION
    ============================================ */
