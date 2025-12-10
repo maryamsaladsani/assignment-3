@@ -1,6 +1,7 @@
 (function() {
     const items = document.querySelectorAll('.timeline-item');
     const filters = document.querySelectorAll('.filter-chip');
+    const timeline = document.querySelector('.volunteer-timeline');
 
     // Click to expand/collapse
     items.forEach(item => {
@@ -38,6 +39,35 @@
                     }
                 }
             });
+
+            // Center the visible items if only a few are shown
+            centerTimelineItems();
         });
     });
+
+    // Function to center timeline when few items are visible
+    function centerTimelineItems() {
+        const visibleItems = document.querySelectorAll('.timeline-item:not(.hidden)');
+
+        if (visibleItems.length <= 3) {
+            // Calculate total width of visible items
+            const totalItemsWidth = Array.from(visibleItems).reduce((sum, item) => {
+                return sum + item.offsetWidth + 32; // 32px = 2rem gap
+            }, 0);
+
+            const containerWidth = timeline.offsetWidth;
+
+            if (totalItemsWidth < containerWidth) {
+                // Center by scrolling to middle and adding padding
+                timeline.style.justifyContent = 'center';
+            } else {
+                timeline.style.justifyContent = 'flex-start';
+            }
+        } else {
+            timeline.style.justifyContent = 'flex-start';
+        }
+
+        // Reset scroll position
+        timeline.scrollLeft = 0;
+    }
 })();
